@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "raspberry-pi.raspberry-pi-pico",
-        "visualstudioexptteam.vscodeintellicode"
+        "visualstudioexptteam.vscodeintellicode",
+        "ms-python.black-formatter"
     ]
 }
