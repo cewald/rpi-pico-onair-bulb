@@ -1,6 +1,7 @@
-from src.microdot import Microdot
 from machine import Pin
+from src.microdot import Microdot
 from src.config import getConfig
+from src.display import showText, clear
 
 print("Init server")
 
@@ -28,16 +29,24 @@ async def index(request):
 @app.route("/on", methods=["GET"])
 async def on(request):
     led.on()
+    showText(text="ONAIR")
     return returnResponse()
 
 
 @app.route("/off", methods=["GET"])
 async def off(request):
     led.off()
+    clear()
     return returnResponse()
 
 
 @app.route("/toggle", methods=["GET"])
 async def toggle(request):
     led.toggle()
+
+    if led.value() == 1:
+        clear()
+    else:
+        showText(text="ONAIR")
+
     return returnResponse()
