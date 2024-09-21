@@ -16,7 +16,7 @@ def connect_to_wifi(ssid = config['wifiName'], password = config['wifiPassword']
         print(".")
         sleep(1)
 
-    print("Connected to WiFi:", wlan.ifconfig())
+    print("Connected to WiFi:", wlan.ifconfig()[0])
     print("Hostname:", network.hostname())
 
 def get_wifi():
