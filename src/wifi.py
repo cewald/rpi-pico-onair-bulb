@@ -6,9 +6,9 @@ config = load_config()
 wlan = network.WLAN(network.STA_IF)
 
 def connect_to_wifi(ssid = config['wifiName'], password = config['wifiPassword']):
-    network.hostname(config['hostname'])
-
     wlan.active(True)
+
+    network.hostname(config['hostname'])
     wlan.connect(ssid, password)
 
     print("Connecting to WiFi...")
