@@ -4,4 +4,4 @@ This is the repository for a DIY on-air-display using a [MAX7219 8x32 LED matrix
 
 ## Configuration
 
-Make a copy of `config.sample.json`, call it `config.json` and apply your configs.
+Make a copy of `src/config.sample.json`, call it `src/config.json` and apply your configs.
