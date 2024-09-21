@@ -6,11 +6,12 @@ print('Init server')
 app = Microdot()
 config = getConfig()
 
-@app.route('/')
-async def index(request):
-    return 'Hello, world!'
-
 def startServer():
     port = config['port']
     print('Start server on port:', port)
     app.run(port=port)
+
+@app.route('/')
+async def index(request):
+    return 'Hello, world!'
+
