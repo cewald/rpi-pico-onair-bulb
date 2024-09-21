@@ -12,12 +12,13 @@ def connectToWifi(ssid=config["wifiName"], password=config["wifiPassword"]):
     network.hostname(config["hostname"])
     wlan.connect(ssid, password)
 
-    print("Connecting to WiFi...")
+    print("Connecting to WiFi")
 
     while not wlan.isconnected():
         print(".", end="")
         sleep(1)
 
+    print("")
     print("Connected to WiFi:", wlan.ifconfig()[0])
     print("Hostname:", network.hostname())
 
