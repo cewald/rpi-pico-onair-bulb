@@ -1,5 +1,5 @@
 from machine import Pin
-from wifi import connect_to_wifi
+from src.wifi import connect_to_wifi
 
 # Add LED
 pin = Pin("LED", Pin.OUT)

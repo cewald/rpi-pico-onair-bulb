@@ -4,7 +4,7 @@ data = ''
 
 def load_config():
     global data
-    with open("config.json", "r") as file:
+    with open("src/config.json", "r") as file:
         data = ujson.load(file) 
     return data
 

@@ -1,6 +1,6 @@
 import network
 from time import sleep
-from config import load_config
+from src.config import load_config
 
 config = load_config()
 wlan = network.WLAN(network.STA_IF)
