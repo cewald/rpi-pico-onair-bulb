@@ -16,8 +16,10 @@ wlan.active(True)
 wlan.connect(ssid, password)
 
 # Wait for connection
+print('Connecting to WiFi')
 while not wlan.isconnected():
     sleep(1)
+    print('.')
 
 print('Connected to WiFi:', wlan.ifconfig())
 
