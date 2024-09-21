@@ -13,7 +13,7 @@ led = Pin("LED", Pin.OUT)
 def startServer():
     port = config["port"]
     print("Start server on port:", port)
-    app.run(port=port)
+    app.run(port=port, debug=True)
 
 
 def returnResponse(success=True):
