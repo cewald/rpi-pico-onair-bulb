@@ -1,11 +1,5 @@
-from machine import Pin
-from src.wifi import connect_to_wifi
+from src.wifi import connectToWifi
+from src.rest.server import startServer
 
-# Add LED
-pin = Pin("LED", Pin.OUT)
-pin.on()
-
-connect_to_wifi()
-
-while True:
-  pass
+connectToWifi()
+startServer()

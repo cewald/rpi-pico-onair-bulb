@@ -1,5 +1,6 @@
 {
     "wifiName": "Name of Wifi",
     "wifiPassword": "Your Password",
-    "hostname": "on-air-bulb"
+    "hostname": "on-air-bulb",
+    "port": 80
 }

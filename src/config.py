@@ -2,7 +2,7 @@ import ujson
 
 data = None
 
-def get_config():
+def getConfig():
     global data
     if not data:
         print('Init config')
