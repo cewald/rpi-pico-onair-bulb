@@ -11,7 +11,8 @@ class Display(object):
         self.display = src.max7219.Matrix8x8(self.spi, self.cs, 4)
 
         self.display.brightness(0)
-        self.clear()
+        self.display.fill(0)
+        self.display.show()
         self.display.brightness(1)
 
     def show_text(self, text="PICO"):
