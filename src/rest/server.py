@@ -44,7 +44,7 @@ async def off(request):
 async def toggle(request):
     led.toggle()
 
-    if led.value() == 1:
+    if led.value() == 0:
         clear()
     else:
         showText(text="ONAIR")
