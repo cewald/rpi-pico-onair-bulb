@@ -9,10 +9,9 @@ app = Microdot()
 config = get_config()
 
 
-def start_server():
+async def start_server():
     port = config["port"]
-    print("Start server on port:", port)
-    app.run(port=port, debug=True)
+    return await app.start_server(port=port, debug=True)
 
 
 def returnResponse(success=True):
