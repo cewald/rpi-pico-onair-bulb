@@ -53,8 +53,6 @@ class Display(object):
         self.display.show()
         self.display.brightness(1)
 
-        self.draw_bitmap()
-
     def show_text(self, text="PICO"):
         self.clear()
 

@@ -1,14 +1,12 @@
-from machine import Pin
 from src.microdot import Microdot
 from src.config import get_config
 from src.display import display
+from src.led import led
 
 print("Init server")
 
 app = Microdot()
 config = get_config()
-
-led = Pin("LED", Pin.OUT)
 
 
 def start_server():
