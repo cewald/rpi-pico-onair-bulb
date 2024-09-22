@@ -29,7 +29,7 @@ async def index(request):
 @app.route("/on", methods=["GET"])
 async def on(request):
     led.on()
-    display.show_text(text="ONAIR")
+    display.draw_bitmap()
     return returnResponse()
 
 
@@ -47,6 +47,6 @@ async def toggle(request):
     if led.value() == 0:
         display.clear()
     else:
-        display.show_text(text="ONAIR")
+        display.draw_bitmap()
 
     return returnResponse()
