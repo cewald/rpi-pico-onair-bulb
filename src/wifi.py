@@ -1,12 +1,12 @@
 import network
 from time import sleep
-from src.config import getConfig
+from src.config import get_config
 
-config = getConfig()
+config = get_config()
 wlan = network.WLAN(network.STA_IF)
 
 
-def connectToWifi(ssid=config["wifiName"], password=config["wifiPassword"]):
+def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
     wlan.active(True)
 
     network.hostname(config["hostname"])
@@ -23,5 +23,5 @@ def connectToWifi(ssid=config["wifiName"], password=config["wifiPassword"]):
     print("Hostname:", network.hostname())
 
 
-def getWifi():
+def get_wifi():
     return wlan.ifconfig()

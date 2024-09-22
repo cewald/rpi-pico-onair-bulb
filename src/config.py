@@ -3,7 +3,7 @@ import ujson
 data = None
 
 
-def getConfig():
+def get_config():
     global data
     if not data:
         print("Init config")

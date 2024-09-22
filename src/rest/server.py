@@ -1,17 +1,17 @@
 from machine import Pin
 from src.microdot import Microdot
-from src.config import getConfig
-from src.display import showText, clear
+from src.config import get_config
+from src.display import display
 
 print("Init server")
 
 app = Microdot()
-config = getConfig()
+config = get_config()
 
 led = Pin("LED", Pin.OUT)
 
 
-def startServer():
+def start_server():
     port = config["port"]
     print("Start server on port:", port)
     app.run(port=port, debug=True)
@@ -29,14 +29,14 @@ async def index(request):
 @app.route("/on", methods=["GET"])
 async def on(request):
     led.on()
-    showText(text="ONAIR")
+    display.show_text(text="ONAIR")
     return returnResponse()
 
 
 @app.route("/off", methods=["GET"])
 async def off(request):
     led.off()
-    clear()
+    display.clear()
     return returnResponse()
 
 
@@ -45,8 +45,8 @@ async def toggle(request):
     led.toggle()
 
     if led.value() == 0:
-        clear()
+        display.clear()
     else:
-        showText(text="ONAIR")
+        display.show_text(text="ONAIR")
 
     return returnResponse()
