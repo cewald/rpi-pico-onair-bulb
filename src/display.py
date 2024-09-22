@@ -1,42 +1,6 @@
 from machine import Pin, SPI
 import src.max7219
-
-bitmap = bytearray(
-    [
-        0x7F,
-        0xFF,
-        0xFF,
-        0xFE,
-        0x80,
-        0x00,
-        0x00,
-        0x01,
-        0x9C,
-        0x63,
-        0x3B,
-        0x81,
-        0xA2,
-        0x94,
-        0x92,
-        0x99,
-        0xA2,
-        0x97,
-        0x93,
-        0x19,
-        0x9C,
-        0x94,
-        0xBA,
-        0x81,
-        0x80,
-        0x00,
-        0x00,
-        0x01,
-        0x7F,
-        0xFF,
-        0xFF,
-        0xFE,
-    ]
-)
+from src.image import image
 
 
 class Display(object):
@@ -60,13 +24,13 @@ class Display(object):
         self.display.show()
 
     def draw_bitmap(self):
-        global bitmap
+        global image
         for y in range(8):
             for x in range(self.matrix_count * 8):
                 # Determine which byte in the bitmap corresponds to the current pixel
                 byte_index = (y * self.matrix_count) + (x // 8)
                 # Get the specific byte from the bitmap
-                byte = bitmap[byte_index]
+                byte = image[byte_index]
                 # Extract the individual bit corresponding to the current pixel
                 bit = (byte >> (7 - (x % 8))) & 1
                 # Set the pixel on the display (1 = on, 0 = off)
