@@ -1,6 +1,6 @@
 import uasyncio as asyncio
 from src.wifi import connect_to_wifi
-from src.rest.server import start_server
+from src.server import start_server
 from src.button import init_button
 
 

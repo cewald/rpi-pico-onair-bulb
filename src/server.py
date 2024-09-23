@@ -9,35 +9,35 @@ app = Microdot()
 config = get_config()
 
 
-async def start_server():
+async def start_server(debug=True):
     port = config["port"]
-    return await app.start_server(port=port, debug=True)
+    await app.start_server(port=port, debug=debug)
 
 
 def returnResponse(success=True):
     return {"success": True, "state": led.value()}
 
 
-@app.route("/", methods=["GET"])
+@app.get("/")
 async def index(request):
     return returnResponse()
 
 
-@app.route("/on", methods=["GET"])
+@app.get("/on")
 async def on(request):
     led.on()
     display.draw_bitmap()
     return returnResponse()
 
 
-@app.route("/off", methods=["GET"])
+@app.get("/off")
 async def off(request):
     led.off()
     display.clear()
     return returnResponse()
 
 
-@app.route("/toggle", methods=["GET"])
+@app.get("/toggle")
 async def toggle(request):
     led.toggle()
 
