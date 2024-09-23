@@ -11,7 +11,6 @@ async def init_button():
 
     global current_value
     while True:
-        print("Button:", button.value())
         if button.value() != current_value:
             print("Button pressed:", button.value())
             current_value = button.value()
