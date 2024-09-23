@@ -30,6 +30,13 @@ async def on(request):
     return returnResponse()
 
 
+@app.get("/on/<text>")
+async def on_with_text(request, text):
+    led.on()
+    display.show_text(text=text)
+    return returnResponse()
+
+
 @app.get("/off")
 async def off(request):
     led.off()
@@ -45,5 +52,17 @@ async def toggle(request):
         display.clear()
     else:
         display.draw_bitmap()
+
+    return returnResponse()
+
+
+@app.get("/toggle/<text>")
+async def toggle_with_text(request, text):
+    led.toggle()
+
+    if led.value() == 0:
+        display.clear()
+    else:
+        display.show_text(text=text)
 
     return returnResponse()
