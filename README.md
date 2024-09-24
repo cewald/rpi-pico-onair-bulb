@@ -13,12 +13,12 @@ By default the `byte_array` representation of the `image.png` in the root folder
 To create a custom image follow these steps:
 
 1. install `pillow` library:
-   ```
+   ```bash
    pip3 install pillow
    ```
-1. create your monochrome PNG image in the dimensions of 8x32px and replace the `image.png` in the root folder
-1. run the image2bytearray script in the root folder:
-   ```
-   python3 image2bytearray.py
+1. create your monochrome (black and white) PNG image in the dimensions of 8x32px and replace the `image.png` in the root folder
+1. run the `image2bytearray` script in the `/scripts` folder:
+   ```bash
+   python3 scripts/image2bytearray.py
    ```
 1. the `src/image.py` should now be updated with your `byte_array` representation of your image
