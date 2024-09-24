@@ -1,5 +1,5 @@
 from machine import Pin, SPI
-import src.max7219
+import lib.max7219
 from src.image import image
 
 
@@ -10,7 +10,7 @@ class Display(object):
         self.matrix_count = 4
         self.spi = SPI(0, sck=Pin(2), mosi=Pin(3))
         self.cs = Pin(5, Pin.OUT)
-        self.display = src.max7219.Matrix8x8(self.spi, self.cs, self.matrix_count)
+        self.display = lib.max7219.Matrix8x8(self.spi, self.cs, self.matrix_count)
 
         self.display.brightness(0)
         self.display.fill(0)
