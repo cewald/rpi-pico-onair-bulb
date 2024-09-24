@@ -26,7 +26,7 @@ async def index(request):
 @app.get("/on")
 async def on(request):
     led.on()
-    display.draw_bitmap()
+    display.show_image()
     return returnResponse()
 
 
@@ -51,7 +51,7 @@ async def toggle(request):
     if led.value() == 0:
         display.clear()
     else:
-        display.draw_bitmap()
+        display.show_image()
 
     return returnResponse()
 

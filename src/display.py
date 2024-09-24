@@ -23,7 +23,7 @@ class Display(object):
         self.display.text(text, 0, 0, 1)
         self.display.show()
 
-    def draw_bitmap(self):
+    def show_image(self):
         global image
         for y in range(8):
             for x in range(self.matrix_count * 8):

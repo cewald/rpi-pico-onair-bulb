@@ -15,7 +15,7 @@ async def init_button():
             print("Button pressed:", button.value())
             current_value = button.value()
             if current_value == 1:
-                display.draw_bitmap()
+                display.show_image()
             else:
                 display.clear()
 
