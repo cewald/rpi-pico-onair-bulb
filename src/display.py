@@ -1,5 +1,6 @@
 from machine import Pin, SPI
-import lib.max7219
+from time import sleep
+from lib.max7219 import Matrix8x8
 from src.image import image
 
 
@@ -10,18 +11,26 @@ class Display(object):
         self.matrix_count = 4
         self.spi = SPI(0, sck=Pin(2), mosi=Pin(3))
         self.cs = Pin(5, Pin.OUT)
-        self.display = lib.max7219.Matrix8x8(self.spi, self.cs, self.matrix_count)
+        self.display = Matrix8x8(self.spi, self.cs, self.matrix_count)
 
         self.display.brightness(0)
         self.display.fill(0)
         self.display.show()
         self.display.brightness(1)
 
-    def show_text(self, text="PICO"):
+    def show_text(self, text="PICO", delay=0.1):
         self.clear()
 
-        self.display.text(text, 0, 0, 1)
-        self.display.show()
+        if len(text) > 4:
+            total_length = len(text) * 8
+            for i in range(-(self.matrix_count * 8), total_length + 1):
+                display.fill(0)
+                display.text(text, i, 0, 1)  # Adjust the position of the text
+                display.show()
+                sleep(delay)
+        else:
+            self.display.text(text, 0, 0, 1)
+            self.display.show()
 
     def show_image(self):
         global image
