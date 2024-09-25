@@ -1,4 +1,4 @@
-from lib.microdot import Microdot
+from lib.microdot import Microdot, Response
 from src.config import get_config
 from src.display import display
 from src.led import led
@@ -32,6 +32,9 @@ async def on(request):
 
 @app.get("/on/<text>")
 async def on_with_text(request, text):
+    if not text:
+        return Response.redirect("/on")
+
     led.on()
     display.show_text(text=text)
     return returnResponse()
@@ -58,6 +61,9 @@ async def toggle(request):
 
 @app.get("/toggle/<text>")
 async def toggle_with_text(request, text):
+    if not text:
+        return Response.redirect("/toggle")
+
     led.toggle()
 
     if led.value() == 0:
