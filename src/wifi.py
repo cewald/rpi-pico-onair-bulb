@@ -32,6 +32,11 @@ def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
         max_wait -= 1
         sleep(1)
 
+    if max_wait == 0:
+        print("\nFailed to connect")
+        display.show_text("fail")
+        return
+
     print("\nConnected to WiFi:", wlan.ifconfig()[0])
     print("Hostname:", network.hostname())
 
