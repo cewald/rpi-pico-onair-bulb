@@ -18,12 +18,6 @@ def returnResponse(success=True):
     return {"success": True, "state": led.value()}
 
 
-@app.before_request
-async def redirect_trailing_slash(request):
-    if request.path != "/" and request.path.endswith("/"):
-        return Response.redirect(request.path.rstrip("/"))
-
-
 @app.get("/")
 async def index(request):
     return returnResponse()
