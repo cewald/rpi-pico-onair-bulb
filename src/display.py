@@ -13,12 +13,24 @@ class Display(object):
         self.spi = SPI(0, sck=Pin(2), mosi=Pin(3))
         self.cs = Pin(5, Pin.OUT)
         self.display = Matrix8x8(self.spi, self.cs, self.matrix_count)
+
         self.bounce_task = None
+        self.blink_task = None
 
         self.display.brightness(0)
         self.display.fill(0)
         self.display.show()
         self.display.brightness(1)
+
+    def stop_async_tasks(self):
+        if self.bounce_task and not self.bounce_task.done():
+            self.bounce_task.cancel()
+
+        if self.blink_task and not self.blink_task.done():
+            self.blink_task.cancel()
+
+        self.blink_task = None
+        self.bounce_task = None
 
     def show_text(self, text="PICO", delay=0.1):
         if self.text == text:
@@ -34,8 +46,6 @@ class Display(object):
             self.display.show()
 
     async def bounce_text(self, text, delay=0.1, end_wait=0.5):
-        print('bounce_text', text)
-
         length = len(text) * 8
         max_offset = length - 32
         direction = 1
@@ -77,20 +87,28 @@ class Display(object):
 
         self.display.show()
 
-    def show_image(self):
+    def show_image(self, blink=True):
         global image_zero
         global image_one
-        self.draw_image(image_zero)
 
-    def stop_bounce_text(self):
-        if self.bounce_task and not self.bounce_task.done():
-            self.bounce_task.cancel()
+        self.clear()
 
-        self.bounce_task = None
+        if not blink:
+            self.draw_image(image_zero)
+            return
+
+        self.blink_task = create_task(self.blink_image())
+
+    async def blink_image(self):
+        while True:
+            self.draw_image(image_zero)
+            await sleep(.5)
+            self.draw_image(image_one)
+            await sleep(.5)
 
     def clear(self):
         self.text = ""
-        self.stop_bounce_text()
+        self.stop_async_tasks()
 
         self.display.fill(0)
         self.display.show()
