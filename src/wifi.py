@@ -29,7 +29,7 @@ def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
 
         sleep(1)
 
-    print("Connected to WiFi:", wlan.ifconfig()[0])
+    print("\nConnected to WiFi:", wlan.ifconfig()[0])
     print("Hostname:", network.hostname())
 
     display.show_text("cnct")
