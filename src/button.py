@@ -1,4 +1,4 @@
-from time import sleep
+from asyncio import sleep
 from machine import Pin
 from src.display import display
 
@@ -19,4 +19,4 @@ async def init_button():
             else:
                 display.clear()
 
-        sleep(0.1)
+        await sleep()
