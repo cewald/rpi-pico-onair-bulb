@@ -19,4 +19,4 @@ async def init_button():
             else:
                 display.clear()
 
-        await sleep()
+        await sleep(0.1)
