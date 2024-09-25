@@ -76,13 +76,9 @@ class Display(object):
     def draw_image(self, image_byte_array=bytearray([])):
         for y in range(8):
             for x in range(self.matrix_count * 8):
-                # Determine which byte in the bitmap corresponds to the current pixel
                 byte_index = (y * self.matrix_count) + (x // 8)
-                # Get the specific byte from the bitmap
                 byte = image_byte_array[byte_index]
-                # Extract the individual bit corresponding to the current pixel
                 bit = (byte >> (7 - (x % 8))) & 1
-                # Set the pixel on the display (1 = on, 0 = off)
                 self.display.pixel(x, y, bit)
 
         self.display.show()
