@@ -71,12 +71,11 @@ async def toggle(request):
 async def toggle_with_text(request, text):
     text_change = text != display.text
 
-    if not text_change:
-        led.toggle()
-
-    if led.value() == 0 and not text_change:
+    if led.value() == 1 and not text_change:
         display.clear()
-    else:
+        led.off()
+    elif text_change:
         display.show_text(text=text)
+        led.on()
 
     return returnResponse()

@@ -1,5 +1,5 @@
+from asyncio import create_task, sleep
 from machine import Pin, SPI
-from time import sleep
 from lib.max7219 import Matrix8x8
 from src.image import image
 
@@ -20,19 +20,28 @@ class Display(object):
         self.display.brightness(1)
 
     def show_text(self, text="PICO", delay=0.1):
+        if self.text == text:
+            return
+
         self.clear()
         self.text = text
 
         if len(text) > 4:
-            total_length = len(text) * 8
-            for i in range(-(self.matrix_count * 8), total_length + 1):
-                self.display.fill(0)
-                self.display.text(text, i, 0, 1)  # Adjust the position of the text
-                self.display.show()
-                sleep(delay)
+            create_task(self.scoll_text(text=text, delay=delay))
         else:
             self.display.text(text, 0, 0, 1)
             self.display.show()
+
+    async def scoll_text(self, text="PICOLONG", delay=0.1):
+        total_length = len(text) * 8
+        for i in range(-(self.matrix_count * 8), total_length + 1):
+            if not self.text == text:
+                break
+
+            self.display.fill(0)
+            self.display.text(text, i, 0, 1)  # Adjust the position of the text
+            self.display.show()
+            await sleep(delay)
 
     def show_image(self):
         global image
