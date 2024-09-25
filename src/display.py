@@ -1,7 +1,7 @@
 from asyncio import create_task, sleep
 from machine import Pin, SPI
 from lib.max7219 import Matrix8x8
-from src.image import image
+from src.image import image_one, image_zero
 
 
 class Display(object):
@@ -9,6 +9,7 @@ class Display(object):
         print("Init display")
 
         self.text = ""
+        self.run_bounce_animation = True
         self.matrix_count = 4
         self.spi = SPI(0, sck=Pin(2), mosi=Pin(3))
         self.cs = Pin(5, Pin.OUT)
@@ -27,36 +28,52 @@ class Display(object):
         self.text = text
 
         if len(text) > 4:
-            create_task(self.scoll_text(text=text, delay=delay))
+            create_task(self.bounce_text(text=text, delay=delay))
         else:
             self.display.text(text, 0, 0, 1)
             self.display.show()
 
-    async def scoll_text(self, text="PICOLONG", delay=0.1):
-        total_length = len(text) * 8
-        for i in range(-(self.matrix_count * 8), total_length + 1):
-            if not self.text == text:
-                break
+    async def bounce_text(self, text, delay=0.1):
+        self.run_bounce_animation = False
+        self.run_bounce_animation = True
 
+        length = len(text) * 8
+        max_offset = length - 32
+        direction = 1
+        pos = 0
+
+        while self.run_bounce_animation:
             self.display.fill(0)
-            self.display.text(text, i, 0, 1)  # Adjust the position of the text
+            self.display.text(text, -pos, 0, 1)
             self.display.show()
+
             await sleep(delay)
 
-    def show_image(self):
-        global image
+            pos += direction
+
+            if pos >= max_offset or pos <= 0:
+                direction *= -1
+
+        print("Debounce")
+
+    def draw_image(self, image_byte_array=bytearray([])):
         for y in range(8):
             for x in range(self.matrix_count * 8):
                 # Determine which byte in the bitmap corresponds to the current pixel
                 byte_index = (y * self.matrix_count) + (x // 8)
                 # Get the specific byte from the bitmap
-                byte = image[byte_index]
+                byte = image_byte_array[byte_index]
                 # Extract the individual bit corresponding to the current pixel
                 bit = (byte >> (7 - (x % 8))) & 1
                 # Set the pixel on the display (1 = on, 0 = off)
                 self.display.pixel(x, y, bit)
 
         self.display.show()
+
+    def show_image(self):
+        global image_zero
+        global image_one
+        self.draw_image(image_zero)
 
     def clear(self):
         self.text = ""

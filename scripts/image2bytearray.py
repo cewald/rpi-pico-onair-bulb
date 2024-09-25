@@ -37,13 +37,21 @@ def image_to_bytearray(image_path, width, height):
 
 
 # Example usage: convert an image to a bytearray for a 32x8 MAX7219 display
-byte_array = image_to_bytearray("image.png", 32, 8)
+byte_array_one = image_to_bytearray("image-1.png", 32, 8)
+byte_array_zero = image_to_bytearray("image-0.png", 32, 8)
 
 # Print the bytearray in src/image.py file
 with open("src/image.py", "w+") as f:
-    f.write("image = bytearray(" + "\n")
+    f.write("image_one = bytearray(" + "\n")
     f.write("    [" + "\n")
-    for byte in byte_array:
+    for byte in byte_array_zero:
+        f.write(f"        0b{byte:08b},\n")
+    f.write("    ]\n")
+    f.write(")\n\n")
+
+    f.write("image_zero = bytearray(" + "\n")
+    f.write("    [" + "\n")
+    for byte in byte_array_one:
         f.write(f"        0b{byte:08b},\n")
     f.write("    ]\n")
     f.write(")\n")

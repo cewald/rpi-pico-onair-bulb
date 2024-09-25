@@ -8,15 +8,15 @@ Make a copy of `config.sample.json`, name it `config.json` and apply your config
 
 ## Create a custom image (transform image into `byte_array`)
 
-By default the `byte_array` representation of the `image.png` in the root folder in `src/image.py` is displayed.
+By default the `byte_array` representations of the `image-0.png` and `image-1.png` in the root folder in `src/image.py` is displayed.
 
-To create a custom image follow these steps:
+To create a custom images follow these steps:
 
 1. install `pillow` library:
    ```bash
    pip3 install pillow
    ```
-1. create your monochrome (black and white) PNG image in the dimensions of 8x32px and replace the `image.png` in the root folder
+1. create your monochrome (black and white) PNG images in the dimensions of 8x32px and replace the `image-0.png` and `image-1.png` in the root folder
 1. run the `image2bytearray` script in the `/scripts` folder:
    ```bash
    python3 scripts/image2bytearray.py
