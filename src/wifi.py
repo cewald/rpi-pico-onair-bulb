@@ -1,6 +1,7 @@
 import network
 from time import sleep
 from src.config import get_config
+from src.display import display
 
 config = get_config()
 wlan = network.WLAN(network.STA_IF)
@@ -13,13 +14,27 @@ def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
     wlan.connect(ssid, password)
 
     print("Connecting to WiFi")
+    display.show_text("init")
+    sleep(0.5)
 
+    count = 0
     while not wlan.isconnected():
         print(".", end="")
+
+        count = count + 1 if count < 4 else 0
+        text = ""
+        for i in range(count):
+            text = text + "."
+        display.show_text(text)
+
         sleep(1)
 
     print("Connected to WiFi:", wlan.ifconfig()[0])
     print("Hostname:", network.hostname())
+
+    display.show_text("cnct")
+    sleep(0.8)
+    display.clear()
 
 
 def get_wifi():
