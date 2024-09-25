@@ -21,7 +21,7 @@ def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
     while not wlan.isconnected():
         print(".", end="")
 
-        count = count + 1 if count < 4 else 0
+        count = count + 1 if count < 4 else 1
         text = ""
         for i in range(count):
             text = text + "."
