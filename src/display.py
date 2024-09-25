@@ -24,9 +24,9 @@ class Display(object):
         if len(text) > 4:
             total_length = len(text) * 8
             for i in range(-(self.matrix_count * 8), total_length + 1):
-                display.fill(0)
-                display.text(text, i, 0, 1)  # Adjust the position of the text
-                display.show()
+                self.display.fill(0)
+                self.display.text(text, i, 0, 1)  # Adjust the position of the text
+                self.display.show()
                 sleep(delay)
         else:
             self.display.text(text, 0, 0, 1)
