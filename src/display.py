@@ -8,6 +8,7 @@ class Display(object):
     def __init__(self):
         print("Init display")
 
+        self.text = ""
         self.matrix_count = 4
         self.spi = SPI(0, sck=Pin(2), mosi=Pin(3))
         self.cs = Pin(5, Pin.OUT)
@@ -20,6 +21,7 @@ class Display(object):
 
     def show_text(self, text="PICO", delay=0.1):
         self.clear()
+        self.text = text
 
         if len(text) > 4:
             total_length = len(text) * 8
@@ -48,6 +50,7 @@ class Display(object):
         self.display.show()
 
     def clear(self):
+        self.text = ""
         self.display.fill(0)
         self.display.show()
 

@@ -18,12 +18,19 @@ def returnResponse(success=True):
     return {"success": True, "state": led.value()}
 
 
+@app.before_request
+async def redirect_trailing_slash(request):
+    if request.path != "/" and request.path.endswith("/"):
+        return Response.redirect(request.path.rstrip("/"))
+
+
 @app.get("/")
 async def index(request):
     return returnResponse()
 
 
 @app.get("/on")
+@app.get("/on/")
 async def on(request):
     led.on()
     display.show_image()
@@ -31,16 +38,15 @@ async def on(request):
 
 
 @app.get("/on/<text>")
+@app.get("/on/<text>/")
 async def on_with_text(request, text):
-    if not text:
-        return Response.redirect("/on")
-
     led.on()
     display.show_text(text=text)
     return returnResponse()
 
 
 @app.get("/off")
+@app.get("/off/")
 async def off(request):
     led.off()
     display.clear()
@@ -48,6 +54,7 @@ async def off(request):
 
 
 @app.get("/toggle")
+@app.get("/toggle/")
 async def toggle(request):
     led.toggle()
 
@@ -60,13 +67,14 @@ async def toggle(request):
 
 
 @app.get("/toggle/<text>")
+@app.get("/toggle/<text>/")
 async def toggle_with_text(request, text):
-    if not text:
-        return Response.redirect("/toggle")
+    text_change = text != display.text
 
-    led.toggle()
+    if not text_change:
+        led.toggle()
 
-    if led.value() == 0:
+    if led.value() == 0 and not text_change:
         display.clear()
     else:
         display.show_text(text=text)
