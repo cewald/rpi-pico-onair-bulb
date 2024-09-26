@@ -1,4 +1,4 @@
-from lib.microdot import Microdot, Response
+from lib.microdot import Microdot
 from src.config import get_config
 from src.display import display
 from src.led import led

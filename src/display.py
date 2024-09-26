@@ -1,4 +1,4 @@
-from asyncio import Event, create_task, sleep, CancelledError
+from asyncio import create_task, sleep
 from machine import Pin, SPI
 from lib.max7219 import Matrix8x8
 from src.image import image_one, image_zero
@@ -50,7 +50,7 @@ class Display(object):
         max_offset = length - 32
         direction = 1
         pos = 0
-        
+
         switch = False
         is_initialized = False
 
@@ -71,7 +71,6 @@ class Display(object):
             if pos >= max_offset or pos <= 0:
                 direction *= -1
                 switch = True
-
 
     def draw_image(self, image_byte_array=bytearray([])):
         for y in range(8):
@@ -98,9 +97,9 @@ class Display(object):
     async def blink_image(self):
         while True:
             self.draw_image(image_zero)
-            await sleep(.5)
+            await sleep(0.5)
             self.draw_image(image_one)
-            await sleep(.5)
+            await sleep(0.5)
 
     def clear(self):
         self.text = ""
