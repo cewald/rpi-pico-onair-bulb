@@ -79,11 +79,11 @@ async def toggle_with_text(request, text):
 @app.get("/brightness/")
 async def brightness(request):
     display.brightness()
-    return returnResponse()
+    return {"success": True, "state": display.current_brightness}
 
 
 @app.get("/brightness/<int:value>")
 @app.get("/brightness/<int:value>/")
 async def brightness_with_value(request, value):
     display.brightness(value)
-    return returnResponse()
+    return {"success": True, "state": display.current_brightness}

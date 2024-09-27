@@ -10,6 +10,8 @@ class Display(object):
 
         self.text = ""
         self.default_brightness = 1
+        self.current_brightness = self.default_brightness
+
         self.matrix_count = 4
         self.spi = SPI(0, sck=Pin(2), mosi=Pin(3))
         self.cs = Pin(5, Pin.OUT)
@@ -110,10 +112,14 @@ class Display(object):
         self.display.show()
 
     def brightness(self, value):
-        if not value or 0 <= value <= 15:
-            self.display.brightness(self.default_brightness)
+        if not value or not 0 <= value <= 15:
+            self.current_brightness = self.default_brightness
         else:
-            self.display.brightness(value)
+            self.current_brightness = value
+
+        self.display.brightness(self.current_brightness)
+
+        return self.current_brightness
 
 
 display = Display()
