@@ -73,3 +73,17 @@ async def toggle_with_text(request, text):
         led.on()
 
     return returnResponse()
+
+
+@app.get("/brightness")
+@app.get("/brightness/")
+async def brightness(request):
+    display.brightness()
+    return returnResponse()
+
+
+@app.get("/brightness/<int:value>")
+@app.get("/brightness/<int:value>/")
+async def brightness_with_value(request, value):
+    display.brightness(value)
+    return returnResponse()

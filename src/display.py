@@ -9,6 +9,7 @@ class Display(object):
         print("Init display")
 
         self.text = ""
+        self.default_brightness = 1
         self.matrix_count = 4
         self.spi = SPI(0, sck=Pin(2), mosi=Pin(3))
         self.cs = Pin(5, Pin.OUT)
@@ -20,7 +21,7 @@ class Display(object):
         self.display.brightness(0)
         self.display.fill(0)
         self.display.show()
-        self.display.brightness(1)
+        self.display.brightness(self.default_brightness)
 
     def stop_async_tasks(self):
         if self.bounce_task and not self.bounce_task.done():
@@ -107,6 +108,12 @@ class Display(object):
 
         self.display.fill(0)
         self.display.show()
+
+    def brightness(self, value):
+        if not value or 0 <= value <= 15:
+            self.display.brightness(self.default_brightness)
+        else:
+            self.display.brightness(value)
 
 
 display = Display()
