@@ -1,6 +1,7 @@
 from asyncio import create_task, sleep
 from machine import Pin, SPI
 from lib.max7219 import Matrix8x8
+from lib.url_decode import url_decode
 from src.image import image_one, image_zero
 
 
@@ -36,6 +37,8 @@ class Display(object):
         self.bounce_task = None
 
     def show_text(self, text="PICO", delay=0.1):
+        text = url_decode(text)
+
         if self.text == text:
             return
 
