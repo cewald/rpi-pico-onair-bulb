@@ -3,7 +3,7 @@ from machine import Pin
 from src.display import display
 from src.led import led
 
-button = Pin(14, Pin.IN, Pin.PULL_UP)
+button = Pin(4, Pin.IN, Pin.PULL_UP)
 previous_value = button.value()
 
 
