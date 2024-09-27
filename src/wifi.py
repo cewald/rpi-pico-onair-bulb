@@ -16,8 +16,8 @@ def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
     max_wait = 20
 
     print("Connecting to WiFi")
-    display.show_text("init")
-    sleep(0.5)
+    display.show_text("hi:)")
+    sleep(0.8)
 
     count = 0
     while not wlan.isconnected() and max_wait > 0:
