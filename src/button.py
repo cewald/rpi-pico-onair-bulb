@@ -1,4 +1,4 @@
-from time import sleep
+from asyncio import sleep
 from machine import Pin
 from src.display import display
 from src.led import led
@@ -21,4 +21,4 @@ async def init_button():
                 display.show_image()
 
         previous_value = button.value()
-        sleep(0.1)
+        await sleep(0.1)
