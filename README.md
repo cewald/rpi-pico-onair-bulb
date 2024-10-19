@@ -18,7 +18,19 @@ This is the repository for a DIY on-air-display using a [MAX7219 8x32 LED matrix
 
 ## Configuration
 
-Make a copy of `config.sample.json`, name it `config.json` and apply your configs.
+Make a copy of `config.sample.json`, name it `config.json` and apply your configs, like your WiFi credentials etc. .
+
+Flash your Raspberry Pi Zero W with the [latest Micropython](https://micropython.org/download/RPI_PICO_W/) version (instructions on page).
+
+Upload all files to the root folder of the Raspberry Pi Zero W.
+
+After that you can unmount your Pi and put plug it to a suitable power-source. The device should power-up instantly and show its state on the display until it is connected.
+
+Now the device is running and accesible via it's API and the button.
+
+## API Docs
+
+...
 
 ## Create a custom image (transform image into `byte_array`)
 
