@@ -32,7 +32,87 @@ Now the device is running and accesible via it's API and the button.
 
 <details>
    <summary>
-      <code>GET</code> <code>/toggle</code> Turn the default image on/off
+      <code>GET</code> <code>/on</code> Turn the default image on
+   </summary>
+
+   #### Parameters
+   > None
+
+   #### Responses
+   > | http-code | content-type | response |
+   > | --------- | ------------ | -------- |
+   > | `200` | `text/plain;charset=UTF-8` | JSON |
+
+   ##### Example cURL
+   > ```bash
+   >  curl -X GET http://192.168.0.111/on
+   > ```
+</details>
+
+<details>
+   <summary>
+      <code>GET</code> <code>/on/:text</code> Turn any text value on
+   </summary>
+
+   #### Parameters
+   > | name | type | data-type | description |
+   > | ---- | ---- | --------- | ----------- |
+   > | `text` | required | string (url-encoded) | the text-string you want to display, if it is longer than 4 letters it will scroll back and forth |
+
+   #### Responses
+   > | http-code | content-type | response |
+   > | --------- | ------------ | -------- |
+   > | `200` | `text/plain;charset=UTF-8` | JSON |
+
+   ##### Example cURL
+   > ```bash
+   >  curl -X GET http://192.168.0.111/on/Hello%20World
+   > ```
+</details>
+
+<details>
+   <summary>
+      <code>GET</code> <code>/off</code> Turn the default image off
+   </summary>
+
+   #### Parameters
+   > None
+
+   #### Responses
+   > | http-code | content-type | response |
+   > | --------- | ------------ | -------- |
+   > | `200` | `text/plain;charset=UTF-8` | JSON |
+
+   ##### Example cURL
+   > ```bash
+   >  curl -X GET http://192.168.0.111/off
+   > ```
+</details>
+
+<details>
+   <summary>
+      <code>GET</code> <code>/off/:text</code> Turn any text value off
+   </summary>
+
+   #### Parameters
+   > | name | type | data-type | description |
+   > | ---- | ---- | --------- | ----------- |
+   > | `text` | required | string (url-encoded) | the text-string you want to display, if it is longer than 4 letters it will scroll back and forth |
+
+   #### Responses
+   > | http-code | content-type | response |
+   > | --------- | ------------ | -------- |
+   > | `200` | `text/plain;charset=UTF-8` | JSON |
+
+   ##### Example cURL
+   > ```bash
+   >  curl -X GET http://192.168.0.111/off/Hello%20World
+   > ```
+</details>
+
+<details>
+   <summary>
+      <code>GET</code> <code>/toggle</code> Toggle the default image
    </summary>
 
    #### Parameters
@@ -48,16 +128,16 @@ Now the device is running and accesible via it's API and the button.
    >  curl -X GET http://192.168.0.111/toggle
    > ```
 </details>
+
 <details>
    <summary>
-      <code>GET</code> <code>/toggle/:text</code> Turn any text value on/off
+      <code>GET</code> <code>/toggle/:text</code> Toggle any text value
    </summary>
 
    #### Parameters
    > | name | type | data-type | description |
    > | ---- | ---- | --------- | ----------- |
    > | `text` | required | string (url-encoded) | the text-string you want to display, if it is longer than 4 letters it will scroll back and forth |
-
 
    #### Responses
    > | http-code | content-type | response |
@@ -67,6 +147,46 @@ Now the device is running and accesible via it's API and the button.
    ##### Example cURL
    > ```bash
    >  curl -X GET http://192.168.0.111/toggle/Hello%20World
+   > ```
+</details>
+
+<details>
+   <summary>
+      <code>GET</code> <code>/brightness</code> Get current brightness value
+   </summary>
+
+   #### Parameters
+   > None
+
+   #### Responses
+   > | http-code | content-type | response |
+   > | --------- | ------------ | -------- |
+   > | `200` | `text/plain;charset=UTF-8` | JSON |
+
+   ##### Example cURL
+   > ```bash
+   >  curl -X GET http://192.168.0.111/brightness
+   > ```
+</details>
+
+<details>
+   <summary>
+      <code>GET</code> <code>/brightness/:value</code> Set the brightness of the display
+   </summary>
+
+   #### Parameters
+   > | name | type | data-type | description |
+   > | ---- | ---- | --------- | ----------- |
+   > | `brightness` | required | int | set it to a value between `1` and `15`, default: `1` |
+
+   #### Responses
+   > | http-code | content-type | response |
+   > | --------- | ------------ | -------- |
+   > | `200` | `text/plain;charset=UTF-8` | JSON |
+
+   ##### Example cURL
+   > ```bash
+   >  curl -X GET http://192.168.0.111/brightness/5
    > ```
 </details>
 
