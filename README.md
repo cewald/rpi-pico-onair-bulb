@@ -72,17 +72,17 @@ Now the device is running and accesible via it's API and the button.
 
 ## Create a custom image (transform image into `byte_array`)
 
-By default the `byte_array` representations of the `image-0.png` and `image-1.png` in the root folder in `src/image.py` is displayed.
+By default the `byte_array` representations of the `image-0.png` and `image-1.png` in the root folder in `src/image.py` is displayed after another in an short interval (blinking animation).
 
 To create a custom images follow these steps:
 
-1. install `pillow` library:
+1. install `pillow` library (image-library):
    ```bash
    pip3 install pillow
    ```
-1. create your monochrome (black and white) PNG images in the dimensions of 8x32px and replace the `image-0.png` and `image-1.png` in the root folder
+1. create your monochrome (black and white, with a background) PNG images in the dimensions of 8x32px and replace the `image-0.png` and `image-1.png` in the root folder
 1. run the `image2bytearray` script in the `/scripts` folder:
    ```bash
    python3 scripts/image2bytearray.py
    ```
-1. the `src/image.py` should now be updated with your `byte_array` representation of your image
+1. the `src/image.py` should now be updated with the `byte_array` representation of your image
