@@ -6,8 +6,8 @@ This is the repository for a DIY on-air-display using a [MAX7219 8x32 LED matrix
 
 ### Parts
 
-* [MAX7219 8x32 LED matrix]((https://www.amazon.de/Youmile-Control-LED-Anzeigemodul-Arduino-Raspberry/dp/B099F2MN15))
-* [Raspberry Pico W]((https://www.raspberrypi.com/products/raspberry-pi-pico/))
+* [MAX7219 8x32 LED matrix](https://www.amazon.de/Youmile-Control-LED-Anzeigemodul-Arduino-Raspberry/dp/B099F2MN15)
+* [Raspberry Pico W](https://www.raspberrypi.com/products/raspberry-pi-pico/)
 * [Push-Button](https://www.amazon.de/DAOKAI-Momentary-Miniature-Electronic-Components/dp/B09WVFHMSV)
 * 5V Micro-USB power-source or USB cable
 * Wires
