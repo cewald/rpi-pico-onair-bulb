@@ -30,7 +30,45 @@ Now the device is running and accesible via it's API and the button.
 
 ## API Docs
 
-...
+<details>
+   <summary>
+      <code>GET</code> <code>/toggle</code> Turn the default image on/off
+   </summary>
+
+   #### Parameters
+   > None
+
+   #### Responses
+   > | http-code | content-type | response |
+   > | --------- | ------------ | -------- |
+   > | `200` | `text/plain;charset=UTF-8` | JSON |
+
+   ##### Example cURL
+   > ```bash
+   >  curl -X GET http://192.168.0.111/toggle
+   > ```
+</details>
+<details>
+   <summary>
+      <code>GET</code> <code>/toggle/:text</code> Turn any text value on/off
+   </summary>
+
+   #### Parameters
+   > | name | type | data-type | description |
+   > | ---- | ---- | --------- | ----------- |
+   > | `text` | required | string (url-encoded) | the text-string you want to display, if it is longer than 4 letters it will scroll back and forth |
+
+
+   #### Responses
+   > | http-code | content-type | response |
+   > | --------- | ------------ | -------- |
+   > | `200` | `text/plain;charset=UTF-8` | JSON |
+
+   ##### Example cURL
+   > ```bash
+   >  curl -X GET http://192.168.0.111/toggle/Hello%20World
+   > ```
+</details>
 
 ## Create a custom image (transform image into `byte_array`)
 
