@@ -8,13 +8,18 @@ This is the repository for a DIY on-air-display using a [MAX7219 8x32 LED matrix
 
 * [MAX7219 8x32 LED matrix](https://www.amazon.de/Youmile-Control-LED-Anzeigemodul-Arduino-Raspberry/dp/B099F2MN15)
 * [Raspberry Pico W](https://www.raspberrypi.com/products/raspberry-pi-pico/)
-* [Push-Button](https://www.amazon.de/DAOKAI-Momentary-Miniature-Electronic-Components/dp/B09WVFHMSV)
+* [Push-Button](https://www.amazon.de/dp/B081TV622R?smid=AT0FJ7CZCB0G9)
 * 5V Micro-USB power-source or USB cable
 * Wires
+* [Casing](#casing)
 
 ### Wiring
 
 ![wirechart](./fritzing/rpi-pico-onair-bulb_bb.png)
+
+### Casing
+
+I created a [simple 3d printed case](https://cad.onshape.com/documents/71781608140f03a0c4abf547/w/2687a64c73f126bf467bbb62/e/b8791e3240e13732a7194e4d?renderMode=0&uiState=6714c241a4be4f75c8428074) using [OnShape](https://www.onshape.com) you can use and change to your desired needs. By default it fits the display, RPi and the button meantioned above and you can mount it to the wall. I used a [3mm translucent white acrylic glas](https://www.amazon.de/dp/B09J3SW25R) to cover the front, but this is oc optional and has only an aesthetic purpose.
 
 ## Configuration
 
