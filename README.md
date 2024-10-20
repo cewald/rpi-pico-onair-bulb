@@ -29,9 +29,11 @@ Flash your Raspberry Pi Zero W with the [latest Micropython](https://micropython
 
 Upload all files to the root folder of the Raspberry Pi Zero W.
 
-After that you can unmount your Pi and put plug it to a suitable power-source. The device should power-up instantly and show its state on the display until it is connected.
+After that you can unmount your Pi and plug it into a suitable power-source. The device should power-up instantly and show its state on the display until it is connected.
 
-Now the device is running and accesible via it's API and the button.
+When it is connected the display initially shows the given IP address. But you should also be able to use the hostname set in the configs (default: `http://on-air-bulb`).
+
+Now the device is running and accessible via it's [API](#api-docs) and the button.
 
 ## API Docs
 
@@ -46,7 +48,7 @@ Now the device is running and accesible via it's API and the button.
    #### Responses
    > | http-code | content-type | response |
    > | --------- | ------------ | -------- |
-   > | `200` | `text/plain;charset=UTF-8` | JSON |
+   > | `200` | `application/json; charset=UTF-8` | JSON |
 
    ##### Example cURL
    > ```bash
@@ -67,7 +69,7 @@ Now the device is running and accesible via it's API and the button.
    #### Responses
    > | http-code | content-type | response |
    > | --------- | ------------ | -------- |
-   > | `200` | `text/plain;charset=UTF-8` | JSON |
+   > | `200` | `application/json; charset=UTF-8` | `{"success": true, "state": 1}` |
 
    ##### Example cURL
    > ```bash
@@ -77,7 +79,7 @@ Now the device is running and accesible via it's API and the button.
 
 <details>
    <summary>
-      <code>GET</code> <code>/off</code> Turn the default image off
+      <code>GET</code> <code>/off</code> Turn the display off
    </summary>
 
    #### Parameters
@@ -86,7 +88,7 @@ Now the device is running and accesible via it's API and the button.
    #### Responses
    > | http-code | content-type | response |
    > | --------- | ------------ | -------- |
-   > | `200` | `text/plain;charset=UTF-8` | JSON |
+   > | `200` | `application/json; charset=UTF-8` | `{"success": true, "state": 0}` |
 
    ##### Example cURL
    > ```bash
@@ -105,7 +107,7 @@ Now the device is running and accesible via it's API and the button.
    #### Responses
    > | http-code | content-type | response |
    > | --------- | ------------ | -------- |
-   > | `200` | `text/plain;charset=UTF-8` | JSON |
+   > | `200` | `application/json; charset=UTF-8` | `{"success": true, "state": 1}` |
 
    ##### Example cURL
    > ```bash
@@ -126,30 +128,11 @@ Now the device is running and accesible via it's API and the button.
    #### Responses
    > | http-code | content-type | response |
    > | --------- | ------------ | -------- |
-   > | `200` | `text/plain;charset=UTF-8` | JSON |
+   > | `200` | `application/json; charset=UTF-8` | `{"success": true, "state": 5}` |
 
    ##### Example cURL
    > ```bash
-   >  curl -X GET http://192.168.0.111/toggle/Hello%20World
-   > ```
-</details>
-
-<details>
-   <summary>
-      <code>GET</code> <code>/brightness</code> Get current brightness value
-   </summary>
-
-   #### Parameters
-   > None
-
-   #### Responses
-   > | http-code | content-type | response |
-   > | --------- | ------------ | -------- |
-   > | `200` | `text/plain;charset=UTF-8` | JSON |
-
-   ##### Example cURL
-   > ```bash
-   >  curl -X GET http://192.168.0.111/brightness
+   >  curl -X GET http://192.168.0.111/brightness/5
    > ```
 </details>
 
@@ -166,11 +149,30 @@ Now the device is running and accesible via it's API and the button.
    #### Responses
    > | http-code | content-type | response |
    > | --------- | ------------ | -------- |
-   > | `200` | `text/plain;charset=UTF-8` | JSON |
+   > | `200` | `application/json; charset=UTF-8` | JSON |
 
    ##### Example cURL
    > ```bash
    >  curl -X GET http://192.168.0.111/brightness/5
+   > ```
+</details>
+
+<details>
+   <summary>
+      <code>GET</code> <code>/brightness</code> Reset the brightness value
+   </summary>
+
+   #### Parameters
+   > None
+
+   #### Responses
+   > | http-code | content-type | response |
+   > | --------- | ------------ | -------- |
+   > | `200` | `application/json; charset=UTF-8` | `{"success": true, "state": 1}` |
+
+   ##### Example cURL
+   > ```bash
+   >  curl -X GET http://192.168.0.111/brightness
    > ```
 </details>
 
