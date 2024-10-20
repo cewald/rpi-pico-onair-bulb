@@ -5,8 +5,8 @@ from src.button import init_button
 
 
 async def main():
+    await connect_to_wifi()
     await asyncio.gather(start_server(), init_button())
 
 
-connect_to_wifi()
 asyncio.run(main())

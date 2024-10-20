@@ -1,5 +1,5 @@
 import network
-from time import sleep
+from asyncio import sleep
 from src.config import get_config
 from src.display import display
 
@@ -7,7 +7,12 @@ config = get_config()
 wlan = network.WLAN(network.STA_IF)
 
 
-def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
+async def show_text(text, showFor: float):
+    display.show_text(text=text)
+    await sleep(showFor)
+
+
+async def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
     wlan.active(True)
 
     network.hostname(config["hostname"])
@@ -16,8 +21,7 @@ def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
     max_wait = 20
 
     print("Connecting to WiFi")
-    display.show_text("hi:)")
-    sleep(0.8)
+    await show_text(text="wlcm", showFor=1)
 
     count = 0
     while not wlan.isconnected() and max_wait > 0:
@@ -27,10 +31,9 @@ def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
         text = ""
         for i in range(count):
             text = text + "."
-        display.show_text(text)
 
+        await show_text(text=text, showFor=1)
         max_wait -= 1
-        sleep(1)
 
     if max_wait == 0:
         print("\nFailed to connect")
@@ -40,8 +43,8 @@ def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword"]):
     print("\nConnected to WiFi:", wlan.ifconfig()[0])
     print("Hostname:", network.hostname())
 
-    display.show_text("cnct")
-    sleep(0.8)
+    await show_text(text="cnct", showFor=0.8)
+    await show_text(text="IP:" + wlan.ifconfig()[0], showFor=20)
     display.clear()
 
 
