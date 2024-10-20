@@ -23,7 +23,7 @@ I created a [simple 3d printed case](https://cad.onshape.com/documents/717816081
 
 ## Configuration
 
-Make a copy of `config.sample.json`, name it `config.json` and apply your configs, like your WiFi credentials etc. .
+Make a copy of `config.sample.json`, name it `config.json` and apply your configs, like your WiFi credentials etc..
 
 Flash your Raspberry Pi Zero W with the [latest Micropython](https://micropython.org/download/RPI_PICO_W/) version (instructions on page).
 
