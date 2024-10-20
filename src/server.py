@@ -2,6 +2,7 @@ from lib.microdot import Microdot
 from src.config import get_config
 from src.display import display
 from src.led import led
+from lib.url_decode import url_decode
 
 print("Init server")
 
@@ -63,7 +64,7 @@ async def toggle(request):
 @app.get("/toggle/<text>")
 @app.get("/toggle/<text>/")
 async def toggle_with_text(request, text):
-    text_change = text != display.text
+    text_change = url_decode(text) != display.text
 
     if led.value() == 1 and not text_change:
         display.clear()
