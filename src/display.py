@@ -114,7 +114,7 @@ class Display(object):
         self.display.fill(0)
         self.display.show()
 
-    def brightness(self, value):
+    def brightness(self, value: int = None):
         if not value or not 0 <= value <= 15:
             self.current_brightness = self.default_brightness
         else:
