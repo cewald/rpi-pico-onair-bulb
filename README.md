@@ -192,3 +192,9 @@ To create a custom images follow these steps:
    python3 scripts/image2bytearray.py
    ```
 1. the `src/image.py` should now be updated with the `byte_array` representation of your image
+
+---
+
+## License
+
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
