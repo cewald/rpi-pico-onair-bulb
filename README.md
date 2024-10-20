@@ -96,27 +96,6 @@ Now the device is running and accesible via it's API and the button.
 
 <details>
    <summary>
-      <code>GET</code> <code>/off/:text</code> Turn any text value off
-   </summary>
-
-   #### Parameters
-   > | name | type | data-type | description |
-   > | ---- | ---- | --------- | ----------- |
-   > | `text` | required | string (url-encoded) | the text-string you want to display, if it is longer than 4 letters it will scroll back and forth |
-
-   #### Responses
-   > | http-code | content-type | response |
-   > | --------- | ------------ | -------- |
-   > | `200` | `text/plain;charset=UTF-8` | JSON |
-
-   ##### Example cURL
-   > ```bash
-   >  curl -X GET http://192.168.0.111/off/Hello%20World
-   > ```
-</details>
-
-<details>
-   <summary>
       <code>GET</code> <code>/toggle</code> Toggle the default image
    </summary>
 
