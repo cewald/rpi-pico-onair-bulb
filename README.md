@@ -176,6 +176,10 @@ Now the device is running and accessible via it's [API](#api-docs) and the butto
    > ```
 </details>
 
+## Apple Shortcut
+
+I made [*this small shortcut*](https://www.icloud.com/shortcuts/6cb9b6efc35a46379dafb8790af98a7c) using the [Shortcut feature of MacOS and iOS](https://support.apple.com/guide/shortcuts/welcome/ios) – this way you can easily call it from any widget and/or from your home-screen. You can change the target URL if needed, by default it is the hostname set in the `configs.json` (Default: `on-air-bulb`).
+
 ## Create a custom image (transform image into `byte_array`)
 
 By default the `byte_array` representations of the `image-0.png` and `image-1.png` in the root folder in `src/image.py` is displayed after another in an short interval (blinking animation).
