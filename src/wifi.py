@@ -48,5 +48,13 @@ async def connect_to_wifi(ssid=config["wifiName"], password=config["wifiPassword
     display.clear()
 
 
+async def maintain_wifi():
+    print("Add Wifi maintenance")
+    if not wlan.isconnected():
+        print("WiFi disconnected, attempting to reconnect...")
+        wlan.disconnect()
+        connect_to_wifi()
+
+
 def get_wifi():
     return wlan.ifconfig()
