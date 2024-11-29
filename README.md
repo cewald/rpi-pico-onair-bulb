@@ -130,11 +130,11 @@ Now the device is running and accessible via it's [API](#api-docs) and the butto
    #### Responses
    > | http-code | content-type | response |
    > | --------- | ------------ | -------- |
-   > | `200` | `application/json; charset=UTF-8` | `{"success": true, "state": 5}` |
+   > | `200` | `application/json; charset=UTF-8` | `{"success": true, "state": 1}` |
 
    ##### Example cURL
    > ```bash
-   >  curl -X GET http://192.168.0.111/brightness/5
+   >  curl -X GET http://192.168.0.111/toggle/hallo%20welt
    > ```
 </details>
 
